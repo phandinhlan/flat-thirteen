@@ -53,7 +53,7 @@ export class StageService {
   }
 
   nextRound(playedGoal: boolean = false) {
-    this.store.dispatch(this.stage.nextRound(playedGoal));
+    this.store.dispatch(this.stage.nextRound('Mode1', playedGoal));
   }
 
   getRound() {

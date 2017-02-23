@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-
 import { Action } from '@ngrx/store';
+
+import { StageUxMode } from './stage.reducer';
 
 @Injectable()
 export class StageActions {
@@ -22,10 +23,10 @@ export class StageActions {
   }
 
   static NEXTROUND = '[STAGE] NextRound';
-  nextRound(playedGoal: boolean): Action {
+  nextRound(mode: StageUxMode, playedGoal: boolean): Action {
     return {
       type: StageActions.NEXTROUND,
-      payload: playedGoal
+      payload: [mode, playedGoal]
     };
   }
 }
