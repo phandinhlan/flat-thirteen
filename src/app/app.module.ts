@@ -20,6 +20,7 @@ import { APP_IMPORTS } from './app.imports';
 import { APP_PROVIDERS } from './app.providers';
 
 import { AppComponent } from './app.component';
+import { A1Module } from './features/a1/a1.module';
 
 import { AppState } from './app.reducer';
 
@@ -33,6 +34,7 @@ import { AppState } from './app.reducer';
     APP_IMPORTS,
     BrowserModule,
     HttpModule,
+    A1Module
   ],
   bootstrap: [AppComponent],
   providers: [APP_PROVIDERS]
