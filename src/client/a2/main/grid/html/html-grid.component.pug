@@ -1,8 +1,8 @@
 .grid([ngClass]="gridClass$ | async", (mouseleave)="player.unselect()")
   //.top-effect(#topEffect="", (window:resize)="adjustTopEffectCanvasSize($event)") dummyText
-  //.top-effect((window:resize)="adjustTopEffectCanvasSize($event)") more dummy text
+  #top-effect((window:resize)="adjustTopEffectCanvasSize($event)")
   //top-effect(class=".top-effect", (window:resize)="adjustTopEffectCanvasSize($event)")
-  <top-effect class=".top-effect"></top-effect>
+  //<top-effect class=".top-effect"></top-effect>
   .strip-container
     .strip(*ngFor="let key of grid.keys")
       .beat(*ngFor="let pulses of grid.pulsesByBeat; let beat = index",

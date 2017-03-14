@@ -11,6 +11,7 @@ import { TransportService } from '../../../../common/core/transport.service';
 
 import { TopEffect } from '../top-effect';
 
+/*
 @Directive({selector: 'top-effect'})
 class TopEffectDirective {
   constructor(private viewContainer: ViewContainerRef, private elementRef: ElementRef){
@@ -21,6 +22,7 @@ class TopEffectDirective {
     return this.elementRef.nativeElement;
   }
 }
+*/
 
 /**
  * This class represents the HTML version of the Grid Component.
@@ -34,7 +36,7 @@ export class HtmlGridComponent implements OnInit, AfterViewInit {
   @Input() private grid: Grid;
   private gridClass$: Observable<string>;
   private topEffect: TopEffect;
-  @ViewChild(TopEffectDirective) topEffectElement: TopEffectDirective;
+  //@ViewChild(TopEffectDirective) topEffectElement: TopEffectDirective;
 
   constructor(private transport: TransportService, private player: PlayerService,
               private stage: StageService) {
@@ -53,15 +55,18 @@ export class HtmlGridComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {   
     //let width = this.topEffectElement.clientWidth;
     //let height = this.topEffectElement.clientHeight;
-    let width = this.topEffectElement.getElement().clientWidth;
-    console.log(width);
+    //let width = this.topEffectElement.getElement().clientWidth;
+    //console.log(width);
     /*
     console.log(height);
+    */
+    let element = document.getElementById('top-effect');
+    let width = element.clientWidth;
+    let height = element.clientHeight;
     this.topEffect.init(width, height);
-    this.topEffectElement.appendChild(this.topEffect.getView());
+    element.appendChild(this.topEffect.getView());
 
     this.render();
-    */
   }
 
   pulsesFor(beat: number) {
@@ -76,11 +81,9 @@ export class HtmlGridComponent implements OnInit, AfterViewInit {
   }
 
   adjustTopEffectCanvasSize(event) {
-    /*
     let element = document.getElementById('top-effect');
     let width = element.clientWidth;
     let height = element.clientHeight;
     this.topEffect.resize(width, height, false);
-    */
   }
 }
