@@ -39,8 +39,8 @@ class RadialGradient extends PIXI.Filter {
 
         float dist = distance(uv, center);
 
-        //vec4 c = color - vec4(dist, dist, dist, 1.0);
-        vec4 c = smoothstep(0.0,1.0,dist) * vec4(1.0, 0.0, 0.0, 1.0);
+        vec4 c = color - vec4(dist, dist, dist, 1.0);
+        //vec4 c = smoothstep(0.0,1.0,dist) * vec4(1.0, 0.0, 0.0, 1.0);
         gl_FragColor = vec4(c.x,c.y,c.z,color.w);
       }
       `,
@@ -161,7 +161,7 @@ export class TopEffect {
     let texture = g.generateCanvasTexture();
     let sprite = new PIXI.Sprite(texture);
     let sprite2 = new PIXI.Sprite(texture);
-    //sprite2.x = height;
+    sprite2.x = height;
 
     let rgFilter = new RadialGradient();
     rgFilter.uniforms.color = [0.0, 127.0/255.0, 1.0, 0.0];
@@ -185,10 +185,10 @@ export class TopEffect {
 
     //g.filters = [this.shockwaveFilter];
     //sprite.filters = [this.shockwaveFilter, rgFilter];
-    //sprite.filters = [rgFilter, this.shockwaveFilter];
+    sprite.filters = [rgFilter, this.shockwaveFilter];
     sprite2.filters = [this.radarFilter];
 
-    //this.container.addChild(sprite);
+    this.container.addChild(sprite);
     this.container.addChild(sprite2);
   }
 
